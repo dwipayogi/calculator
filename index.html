@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/style/style.css">
+  <title>Calculator</title>
+</head>
+<body>
+  <main>
+    <input type="number" id="recent" disabled>
+    <input type="number" id="input" value="0" disabled>
+    <div class="container">
+      <button onclick="resetCalculator()">AC</button>
+      <button onclick="handleDelete()">DEL</button>
+      <button onclick="handleOperator('%')">%</button>
+      <button onclick="handleOperator('/')">/</button>
+      <button onclick="inputDigit('7')">7</button>
+      <button onclick="inputDigit('8')">8</button>
+      <button onclick="inputDigit('9')">9</button>
+      <button onclick="handleOperator('*')">x</button>
+      <button onclick="inputDigit('4')">4</button>
+      <button onclick="inputDigit('5')">5</button>
+      <button onclick="inputDigit('6')">6</button>
+      <button onclick="handleOperator('-')">-</button>
+      <button onclick="inputDigit('1')">1</button>
+      <button onclick="inputDigit('2')">2</button>
+      <button onclick="inputDigit('3')">3</button>
+      <button onclick="handleOperator('+')">+</button>
+      <button class="zero">0</button>
+      <button onclick="inputDecimal('.')">.</button>
+      <button onclick="handleResult()" class="result">=</button>
+    </div>
+  </main>
+  <script src="assets/script/script.js"></script>
+</body>
+</html>
