@@ -2,22 +2,22 @@ const calculator = {
   displayValue: "0",
   secondDisplayValue: "0",
   firstNumber: null,
-  waitingForSecondNumber: null,
   operator: null,
   result: "0",
 };
 
 let input = document.getElementById("input");
 let recent = document.getElementById("recent");
+let operator = document.getElementById("operator");
 
 function resetCalculator() {
   input.value = "0";
   recent.value = "";
   calculator.displayValue = "0";
   calculator.secondDisplayValue = "0";
-  calculator.firstNumber = null,
-  calculator.waitingForSecondNumber = null,
-  calculator.operator = null
+  (calculator.firstNumber = null), (calculator.result = "0");
+  calculator.operator = null;
+  operator.innerHTML = "";
 }
 
 function inputDigit(digit) {
@@ -31,7 +31,7 @@ function inputDigit(digit) {
 
 function inputDecimal(dot) {
   if (!calculator.displayValue.includes(dot)) {
-    calculator.displayValue += dot;
+    calculator.displayValue = calculator.displayValue + dot;
   }
   input.value = calculator.displayValue;
 }
@@ -42,6 +42,7 @@ function handleOperator(nextOperator) {
   input.value = "0";
   calculator.displayValue = "0";
   calculator.operator = nextOperator;
+  operator.innerHTML = calculator.operator;
 }
 
 const performCalculation = {
@@ -63,13 +64,25 @@ function handleResult() {
     parseFloat(input.value)
   );
   input.value = calculator.result;
-  resetCalculator();
+  recent.value = "";
+  calculator.firstNumber = String(calculator.result);
+  calculator.displayValue = String(calculator.result);
+  operator.innerHTML = "";
 }
 
 function handleDelete() {
-  calculator.displayValue = calculator.displayValue.slice(
-    0,
-    calculator.displayValue.length - 1
-  );
+  if (calculator.displayValue.length === 1) {
+    calculator.displayValue = "0";
+  } else {
+    calculator.displayValue = calculator.displayValue.slice(
+      0,
+      calculator.displayValue.length - 1
+    );
+  }
+  input.value = calculator.displayValue;
+}
+
+function inverseNumber() {
+  calculator.displayValue = calculator.displayValue * -1;
   input.value = calculator.displayValue;
 }
